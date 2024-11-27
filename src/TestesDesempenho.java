@@ -12,12 +12,11 @@ public class TestesDesempenho {
     }
 
     private static void realizarTestes(int tamanho) {
-        // Gerar conjuntos de dados
+        
         int[] dadosOrdenados = gerarDadosOrdenados(tamanho);
         int[] dadosInversos = gerarDadosInversos(tamanho);
         int[] dadosAleatorios = gerarDadosAleatorios(tamanho);
 
-        // Realizar testes para cada estrutura
         System.out.println("\n--- Testes com dados ORDENADOS ---");
         testarTodasEstruturas(dadosOrdenados, "ordenada");
         
@@ -37,7 +36,7 @@ public class TestesDesempenho {
     private static void testarVetor(int[] dados, String tipo) {
         System.out.println("\nTestes com Vetor - Inserção " + tipo + ":");
         
-        // Teste de inserção
+       
         long mediaInsercao = 0;
         long mediaBuscaPrimeiro = 0;
         long mediaBuscaMeio = 0;
@@ -47,7 +46,7 @@ public class TestesDesempenho {
         for (int i = 0; i < REPETICOES; i++) {
             vetor v = new vetor(dados.length);
             
-            // Teste de inserção
+           
             long inicio = System.nanoTime();
             for (int num : dados) {
                 v.adicionar(num);
@@ -55,29 +54,28 @@ public class TestesDesempenho {
             long fim = System.nanoTime();
             mediaInsercao += (fim - inicio);
 
-            // Testes de busca
+            
             inicio = System.nanoTime();
-            v.buscaSequencial(dados[0]); // Primeiro elemento
+            v.buscaSequencial(dados[0]); 
             fim = System.nanoTime();
             mediaBuscaPrimeiro += (fim - inicio);
 
             inicio = System.nanoTime();
-            v.buscaSequencial(dados[dados.length/2]); // Elemento do meio
+            v.buscaSequencial(dados[dados.length/2]); 
             fim = System.nanoTime();
             mediaBuscaMeio += (fim - inicio);
 
             inicio = System.nanoTime();
-            v.buscaSequencial(dados[dados.length-1]); // Último elemento
+            v.buscaSequencial(dados[dados.length-1]); 
             fim = System.nanoTime();
             mediaBuscaUltimo += (fim - inicio);
 
             inicio = System.nanoTime();
-            v.buscaSequencial(-1); // Elemento inexistente
+            v.buscaSequencial(-1);
             fim = System.nanoTime();
             mediaBuscaInexistente += (fim - inicio);
         }
 
-        // Calcular e exibir médias
         System.out.printf("Média tempo de inserção: %.3f ms%n", (mediaInsercao/REPETICOES) / 1_000.0);
         System.out.printf("Média busca primeiro elemento: %.3f ms%n", (mediaBuscaPrimeiro/REPETICOES) / 1_000.0);
         System.out.printf("Média busca elemento meio: %.3f ms%n", (mediaBuscaMeio/REPETICOES) / 1_000.0);
@@ -97,7 +95,6 @@ public class TestesDesempenho {
         for (int i = 0; i < REPETICOES; i++) {
             arvoreBinaria arvore = new arvoreBinaria();
             
-            // Teste de inserção
             long inicio = System.nanoTime();
             for (int num : dados) {
                 arvore.inserir(num);
@@ -105,7 +102,7 @@ public class TestesDesempenho {
             long fim = System.nanoTime();
             mediaInsercao += (fim - inicio);
 
-            // Testes de busca
+        
             inicio = System.nanoTime();
             arvore.buscar(dados[0]);
             fim = System.nanoTime();
@@ -127,7 +124,6 @@ public class TestesDesempenho {
             mediaBuscaInexistente += (fim - inicio);
         }
 
-        // Calcular e exibir médias
         System.out.printf("Média tempo de inserção: %.3f ms%n", (mediaInsercao/REPETICOES) / 1_000.0);
         System.out.printf("Média busca primeiro elemento: %.3f ms%n", (mediaBuscaPrimeiro/REPETICOES) / 1_000.0);
         System.out.printf("Média busca elemento meio: %.3f ms%n", (mediaBuscaMeio/REPETICOES) / 1_000.0);
@@ -147,7 +143,7 @@ public class TestesDesempenho {
         for (int i = 0; i < REPETICOES; i++) {
             arvoreAVL arvore = new arvoreAVL();
             
-            // Teste de inserção
+            
             long inicio = System.nanoTime();
             for (int num : dados) {
                 arvore.inserir(num);
@@ -155,7 +151,7 @@ public class TestesDesempenho {
             long fim = System.nanoTime();
             mediaInsercao += (fim - inicio);
 
-            // Testes de busca
+        
             inicio = System.nanoTime();
             arvore.buscar(dados[0]);
             fim = System.nanoTime();
@@ -177,7 +173,6 @@ public class TestesDesempenho {
             mediaBuscaInexistente += (fim - inicio);
         }
 
-        // Calcular e exibir médias
         System.out.printf("Média tempo de inserção: %.3f ms%n", (mediaInsercao/REPETICOES) / 1_000.0);
         System.out.printf("Média busca primeiro elemento: %.3f ms%n", (mediaBuscaPrimeiro/REPETICOES) / 1_000.0);
         System.out.printf("Média busca elemento meio: %.3f ms%n", (mediaBuscaMeio/REPETICOES) / 1_000.0);

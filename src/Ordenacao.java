@@ -1,5 +1,4 @@
 public class Ordenacao {
-    // Bubble Sort - Algoritmo básico
     public static void bubbleSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -13,7 +12,7 @@ public class Ordenacao {
         }
     }
 
-    // QuickSort - Algoritmo aprimorado
+
     public static void quickSort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
